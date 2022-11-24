@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Boolzapp</title>
+    <!-- third party -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="background-page">
+    <div class="green-part"></div>
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-5 bg-light d-flex flex-column p-0">
+                    <div class="my-nav-bar d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <img src="./img/avatar_io.jpg" alt="">
+                            <div>Sofia</div>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+                    <div class="notifications d-flex">
+                        <div class="icon-not">
+                            <i class="fa-solid fa-bell-slash"></i>
+                        </div>
+                        <div>
+                            <div>Ricevi notifiche di nuovi messaggi</div>
+                            <div><a href="#"> Attiva notifiche desktop</a> </div>
+                        </div>
+                    </div>
+                    <form class=" d-flex align-items-center" >
+                        <div>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" list="chats">
+                            <datalist id="categories">
+                                <option value="category">
+                            </datalist>
+                        </div>
+                    </form>
+                    <div class="chat-list"
+                    v-for="(task, i) in usersList">
+                        <div class="single-chat d-flex justify-content-between">
+                            <div class="d-flex">
+                                <img :src="task.avatar" alt="">
+                                <div>
+                                    <h4 class="m-0">{{task.name}}</h4>
+                                    <div>{{task.messages[0].message}}</div>
+                                </div>
+                            </div>
+                            <div class="text-end">{{task.messages[0].date}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7 bg-light">
+                    <div class="my-nav-bar d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <img :src="usersList[0].avatar" alt="">
+                            <div>Sofia</div>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
