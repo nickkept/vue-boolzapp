@@ -18,9 +18,9 @@
 <body class="background-page">
     <div class="green-part"></div>
     <div id="app">
-        <div class="container">
+        <div class="container overflow-hidden">
             <div class="row">
-                <div class="col-5 bg-light d-flex flex-column p-0">
+                <div class="col-4 bg-light d-flex flex-column p-0 ">
                     <div class="my-nav-bar d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">
                             <img src="./img/avatar_io.jpg" alt="">
@@ -41,47 +41,55 @@
                             <div><a href="#"> Attiva notifiche desktop</a> </div>
                         </div>
                     </div>
-                    <form class=" d-flex align-items-center" >
+                    <form class=" d-flex align-items-center">
                         <div>
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" list="chats">
-                            <datalist id="categories">
-                                <option value="category">
+                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat"
+                                list="chats">
+                            <datalist id="chats">
+                                <option value="Chats">
                             </datalist>
                         </div>
                     </form>
-                    <div class="chat-list"
-                    v-for="(task, i) in usersList">
-                        <div class="single-chat d-flex justify-content-between">
+                    <div class="chat-list overflow-auto">
+                        <div class="single-chat d-flex justify-content-between " @click="selectedUser = user"
+                            v-for="(user, i) in usersList"
+                            :key="i + user.name">
                             <div class="d-flex">
-                                <img :src="task.avatar" alt="">
+                                <img :src="user.avatar" alt="">
                                 <div>
-                                    <h4 class="m-0">{{task.name}}</h4>
-                                    <div>{{task.messages[0].message}}</div>
+                                    <h4 class="m-0">{{user.name}}</h4>
+                                    <div>{{user.messages[0].message}}</div>
                                 </div>
                             </div>
-                            <div class="text-end">{{task.messages[0].date}}</div>
+                            <div class="text-end">{{user.messages[0].date}}</div>
                         </div>
                     </div>
                 </div>
-                <div class="col-7 bg-light">
-                    <div class="my-nav-bar d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center">
-                            <img :src="usersList[0].avatar" alt="">
-                            <div>Sofia</div>
+                <div class="col-8 p-0 bg-light d-flex flex-column">
+                    <div class="my-nav-bar">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <img :src="usersList[0].avatar" alt="">
+                                <div>Sofia</div>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-circle-notch"></i>
+                                <i class="fa-solid fa-message"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
                         </div>
-                        <div>
-                            <i class="fa-solid fa-circle-notch"></i>
-                            <i class="fa-solid fa-message"></i>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </div>
+                    </div>
+                    <div class="p-3 flex-grow-1 chat-container">
+                        
+                        
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
     <script src="./js/main.js"></script>
 </body>
 

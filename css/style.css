@@ -11,13 +11,20 @@
     top: 0;
     z-index: -1;
 }
+body{
+    height: 100vh;
+}
 .container {
     /* background-color: blue; */
-    height: 94vh;
+    /* height: 94vh;
     margin: auto;
     margin-top: 3vh;
-    margin-bottom: 3vh;
+    margin-bottom: 3vh; */
     /* flex-grow: 1; */
+    position: relative;
+    height: 90vh;
+    top: 5vh;
+    overflow: hidden;
 }
 
 .row img{
@@ -40,6 +47,7 @@
     border-radius: 50%;
     padding: 0.8rem;
     font-size: 1rem;
+    aspect-ratio: 1/1;
 }
 .chat-list{
     overflow: auto;
@@ -48,3 +56,11 @@
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
 }
+.chat-container {
+    background-image: url("../img/mine.jpg");
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    align-items: start;
+}
+

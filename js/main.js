@@ -68,6 +68,27 @@ createApp({
                     ],
                 },
                 {
+                    name: 'Samuele',
+                    avatar: './img/avatar_3.jpg',
+                    visible: true,
+                    messages: [{
+                        date: '28/03/2020 10:10:40',
+                        message: 'La Marianna va in campagna',
+                        status: 'received'
+                    },
+                    {
+                        date: '28/03/2020 10:20:10',
+                        message: 'Sicuro di non aver sbagliato chat?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '28/03/2020 16:15:22',
+                        message: 'Ah scusa!',
+                        status: 'received'
+                    }
+                    ],
+                },
+                {
                     name: 'Alessandro B.',
                     avatar: './img/avatar_4.jpg',
                     visible: true,
@@ -167,11 +188,12 @@ createApp({
                     }
                     ],
                 },
-            ]
-
+            ],
+            
         };
     },
     methods: {
-
-    }
+        
+    },
+    
 }).mount("#app")
