@@ -191,6 +191,7 @@ createApp({
             ],
             selectedUser: null,
             newMessageText: ``,
+            searchText: ` `
         };
     },
     methods: {
@@ -210,6 +211,12 @@ createApp({
                 status: 'received',
                 })
             }, 1000);
+        },
+        getFilteredUsersList() {
+            
+            return this.usersList.filter(user => {
+                return user.name.toLowerCase().includes(this.searchText.toLowerCase())
+            })
         }
     },
     beforeMount () {
