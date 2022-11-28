@@ -21,32 +21,33 @@
         <div class="container overflow-hidden">
             <div class="row">
                 <div class="col-4 bg-light d-flex flex-column p-0 ">
-                    <div class="my-nav-bar d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center">
+                    <div class="my-nav-bar my-border-rigt d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center mx-2">
                             <img src="./img/avatar_io.jpg" alt="">
                             <div>Sofia</div>
                         </div>
-                        <div>
-                            <i class="fa-solid fa-circle-notch"></i>
-                            <i class="fa-solid fa-message"></i>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <div class="font-gray">
+                            <i class="fa-solid fa-circle-notch fs-5 px-2"></i>
+                            <i class="fa-solid fa-message fs-5 px-2"></i>
+                            <i class="fa-solid fa-ellipsis-vertical fs-5 px-2"></i>
                         </div>
                     </div>
-                    <div class="notifications d-flex">
-                        <div class="icon-not">
+                    <div class="notifications d-flex align-items-center">
+                        <div class="icon-not mx-2">
                             <i class="fa-solid fa-bell-slash"></i>
                         </div>
-                        <div>
+                        <div class="py-2">
                             <div>Ricevi notifiche di nuovi messaggi</div>
                             <div><a href="#"> Attiva notifiche desktop</a> </div>
                         </div>
                     </div>
                     <form class=" d-flex align-items-center">
                         <div>
-                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <button class="btn btn-light"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            
                         </div>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat"
+                            <input type="text" class="form-control rounded-0" placeholder="Cerca o inizia una nuova chat"
                                 list="chats">
                             <datalist id="chats">
                                 <option value="Chats">
@@ -54,7 +55,7 @@
                         </div>
                     </form>
                     <div class="chat-list overflow-auto">
-                        <div class="single-chat d-flex justify-content-between " 
+                        <div class="single-chat d-flex justify-content-between mx-2" @click="selectedUser = user"
                             v-for="(user, i) in usersList"
                             :key="i + user.name">
                             <div class="d-flex">
@@ -68,23 +69,39 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-8 p-0 bg-light d-flex flex-column">
+                <div class="col-8 p-0 bg-light d-flex flex-column overflow-auto">
                     <div class="my-nav-bar">
                         <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <img :src="usersList[0].avatar" alt="">
-                                <div>Sofia</div>
+                            <div class="d-flex align-items-center mx-2">
+                                <img :src="`${selectedUser.avatar}`" alt="" >
+                                <div>{{selectedUser.name}}</div>
                             </div>
-                            <div>
-                                <i class="fa-solid fa-circle-notch"></i>
-                                <i class="fa-solid fa-message"></i>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            <div class="font-gray fs-5">
+                                <i class="fa-solid fa-magnifying-glass px-2"></i>
+                                <i class="fa-solid fa-paperclip px-2"></i>
+                                <i class="fa-solid fa-ellipsis-vertical px-2"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="p-3 flex-grow-1 chat-container">
-                        
-                        
+                    <div class="p-3 flex-grow-1 chat-container ">
+                        <div class="chat-message position-relative"
+                        :class="{ 'self-message': messageObj.status === 'sent' }"
+                            v-for="messageObj in selectedUser.messages">
+                            <div>
+                                {{messageObj.message}}
+                            </div>
+                            <div class="small date-pos ">
+                                {{messageObj.date}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 d-flex align-items-center">
+                        <i class="fa-regular fa-face-smile px-4 py-4 fs-5 font-gray"></i>
+                        <input type="text" class="form-control form-control-lg"
+                            placeholder="Scrivi un messaggio..."
+                            v-model="newMessageText"
+                            @keyup.enter="onNewMessageSend">
+                        <i class="fa-solid fa-microphone px-4 fs-5 font-gray"></i>
                     </div>
                 </div>
             </div>

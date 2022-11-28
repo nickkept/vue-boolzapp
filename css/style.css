@@ -11,6 +11,15 @@
     top: 0;
     z-index: -1;
 }
+.row{
+    height: 100%;
+}
+.col-4{
+    height: 100%;
+}
+.col-8{
+    height: 100%;
+}
 body{
     height: 100vh;
 }
@@ -35,7 +44,11 @@ body{
     margin: 0.5rem 0;
 }
 .my-nav-bar{
-    /* display: flex; */
+    background-color: #EAEAEA;
+    
+}
+.my-border-rigt{
+    border-right: 1px solid lightgray;
 }
 .notifications {
     background-color: #8EDAFC;
@@ -62,5 +75,28 @@ body{
     flex-direction: column;
     row-gap: 1rem;
     align-items: start;
+    height: 100%;
+    overflow: auto;
 }
 
+.chat-message {
+    padding: 1rem;
+    background: white;
+    max-width: 60%;
+    min-width: 30%;
+    border-radius: 1rem;
+}
+
+.self-message {
+    align-self: flex-end;
+    background: #D5F9BA;
+}
+
+.font-gray{
+    color: gray ;
+}
+.date-pos{
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+}

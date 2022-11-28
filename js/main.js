@@ -189,11 +189,30 @@ createApp({
                     ],
                 },
             ],
-            
+            selectedUser: null,
+            newMessageText: ``,
         };
     },
     methods: {
-        
+        onNewMessageSend(){
+            const today = new Date()
+            let actualTime = today.getHours().toString().padStart(2, 0) + ":" + today.getMinutes().toString().padStart(2, 0)
+            this.selectedUser.messages.push({
+                date: actualTime,
+                message: this.newMessageText,
+                status: 'sent'
+            })
+            this.newMessageText=``,
+            setTimeout(() => {
+                this.selectedUser.messages.push({
+                date: actualTime, 
+                message: 'Ok',
+                status: 'received',
+                })
+            }, 1000);
+        }
     },
-    
+    beforeMount () {
+        this.selectedUser = this.usersList[0]
+    }
 }).mount("#app")
